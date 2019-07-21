@@ -3,11 +3,11 @@ language: node_js
 services:
   - docker
 
-
+# build the docker container
 before_install:
-  - docker build -t amingilani/worklark-slack-app . # build the docker container
+  - docker build -t amingilani/worklark-slack-app -t registry.heroku.com/$HEROKU_PRODUCTION_APP_NAME/worker .
 
+# deploy the docker container
 script:
   - docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
-  - docker tag amingilani/worklark-slack-app registry.heroku.com/worklark-slack-app-1203/worker
-  - docker push registry.heroku.com/worklark-slack-app-1203/worker
+  - docker push registry.heroku.com/$HEROKU_PRODUCTION_APP_NAME/worker
