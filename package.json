@@ -9,5 +9,8 @@
   },
   "author": "Amin Shah Gilani <amin@gilani.me>",
   "private": "true",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@slack/bolt": "^1.2.0"
+  }
 }
