@@ -12,22 +12,27 @@ app.message('hello', ({ message, say }) => {
     blocks: [
       {
         "type": "section",
+        "response_type": "ephemeral",
         "text": {
           "type": "mrkdwn",
           "text": `Hey there <@${message.user}>!`
-        },
-        "accessory": {
-          "type": "button",
-          "text": {
-            "type": "plain_text",
-            "text": "Click Me"
-          },
-          "action_id": "button_click"
         }
       }
     ]
   });
 });
+
+
+
+// The echo command simply echoes on command
+app.command('/lark', async ({ command, ack, say }) => {
+  // Acknowledge command request
+  ack();
+
+  say(`${command.text}`);
+});
+
+
 
 app.action('button_click', ({ body, ack, say }) => {
   // Acknowledge the action
