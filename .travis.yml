@@ -20,3 +20,6 @@ script:
   - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
   - docker push registry.heroku.com/$HEROKU_PRODUCTION_APP_NAME/web
   - heroku container:release web --app $HEROKU_PRODUCTION_APP_NAME
+
+notifications:
+  slack: <%= ENV['SLACK_TRAVIS_APP_TOKEN' %>
