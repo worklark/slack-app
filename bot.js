@@ -29,7 +29,19 @@ app.command('/lark', async ({ command, ack, say }) => {
   // Acknowledge command request
   ack();
 
-  say(`${command.text}`);
+  // say() sends a message to the channel where the event was triggered
+  say({
+    blocks: [
+      {
+        "type": "section",
+        "response_type": "ephemeral",
+        "text": {
+          "type": "mrkdwn",
+          "text": `You said <@${command.text}>!`
+        }
+      }
+    ]
+  });
 });
 
 
